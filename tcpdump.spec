@@ -4,7 +4,7 @@
 #
 Name     : tcpdump
 Version  : 4.7.4
-Release  : 16
+Release  : 17
 URL      : http://www.tcpdump.org/release/tcpdump-4.7.4.tar.gz
 Source0  : http://www.tcpdump.org/release/tcpdump-4.7.4.tar.gz
 Summary  : No detailed summary available
