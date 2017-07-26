@@ -1,0 +1,33 @@
+Configure miss: rpc/rpcent.h usability
+Configure miss: rpc/rpcent.h presence
+Configure miss: rpc/rpcent.h
+Configure miss: netdnet/dnetdb.h usability
+Configure miss: netdnet/dnetdb.h presence
+Configure miss: netdnet/dnetdb.h
+Configure miss: net/pfvar.h
+Configure miss: smi.h usability
+Configure miss: smi.h presence
+Configure miss: smi.h
+Configure miss: whether to drop root privileges by default
+Configure miss: whether to chroot
+Configure miss: cap_enter
+Configure miss: cap_rights_limit
+Configure miss: cap_ioctls_limit
+Configure miss: whether to sandbox using capsicum
+Configure miss: dnet_htoa declaration in netdnet/dnetdb.h
+Configure miss: library containing dnet_htoa
+Configure miss: main in -lrpc
+Configure miss: local pcap library
+Configure miss: x86_64-generic-linux-gnu-pcap-config
+Configure miss: buggy ether_ntohost
+Configure miss: whether ether_ntohost is declared
+Configure miss: dlpi_walk in -ldlpi
+Configure miss: pcap_set_parser_debug
+Configure miss: whether pcap_debug is defined by libpcap
+Configure miss: whether yydebug is defined by libpcap
+Configure miss: pcap_set_optimizer_debug
+Configure miss: if sockaddr struct has the sa_len member
+Configure miss: if unaligned accesses fail
+Configure miss: openssl/crypto.h usability
+Configure miss: openssl/crypto.h presence
+Configure miss: openssl/crypto.h

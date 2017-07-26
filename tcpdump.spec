@@ -5,11 +5,11 @@
 # Source0 file verified with key 0xE089DEF1D9C15D0D (release@tcpdump.org)
 #
 Name     : tcpdump
-Version  : 4.9.0
-Release  : 21
-URL      : http://www.tcpdump.org/4.9.0-u82xFZBjZxWv/tcpdump-4.9.0.tar.gz
-Source0  : http://www.tcpdump.org/4.9.0-u82xFZBjZxWv/tcpdump-4.9.0.tar.gz
-Source99 : http://www.tcpdump.org/4.9.0-u82xFZBjZxWv/tcpdump-4.9.0.tar.gz.sig
+Version  : 4.9.1
+Release  : 22
+URL      : http://www.tcpdump.org/release/tcpdump-4.9.1.tar.gz
+Source0  : http://www.tcpdump.org/release/tcpdump-4.9.1.tar.gz
+Source99 : http://www.tcpdump.org/release/tcpdump-4.9.1.tar.gz.sig
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : BSD-3-Clause
@@ -17,7 +17,6 @@ Requires: tcpdump-bin
 Requires: tcpdump-doc
 BuildRequires : libcap-ng-dev
 BuildRequires : libpcap-dev
-Patch1: nogeneve.patch
 
 %description
 # tcpdump
@@ -41,12 +40,14 @@ doc components for the tcpdump package.
 
 
 %prep
-%setup -q -n tcpdump-4.9.0
-%patch1 -p1
+%setup -q -n tcpdump-4.9.1
 
 %build
+export http_proxy=http://127.0.0.1:9/
+export https_proxy=http://127.0.0.1:9/
+export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1486008415
+export SOURCE_DATE_EPOCH=1501076809
 %configure --disable-static
 make V=1  %{?_smp_mflags}
 
@@ -54,11 +55,11 @@ make V=1  %{?_smp_mflags}
 export LANG=C
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
-export no_proxy=localhost
+export no_proxy=localhost,127.0.0.1,0.0.0.0
 make VERBOSE=1 V=1 %{?_smp_mflags} check
 
 %install
-export SOURCE_DATE_EPOCH=1486008415
+export SOURCE_DATE_EPOCH=1501076809
 rm -rf %{buildroot}
 %make_install
 
@@ -68,7 +69,7 @@ rm -rf %{buildroot}
 %files bin
 %defattr(-,root,root,-)
 /usr/bin/tcpdump
-/usr/bin/tcpdump.4.9.0
+/usr/bin/tcpdump.4.9.1
 
 %files doc
 %defattr(-,root,root,-)
