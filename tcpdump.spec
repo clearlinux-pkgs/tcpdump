@@ -6,7 +6,7 @@
 #
 Name     : tcpdump
 Version  : 4.9.2
-Release  : 24
+Release  : 25
 URL      : http://www.tcpdump.org/release/tcpdump-4.9.2.tar.gz
 Source0  : http://www.tcpdump.org/release/tcpdump-4.9.2.tar.gz
 Source99 : http://www.tcpdump.org/release/tcpdump-4.9.2.tar.gz.sig
@@ -17,6 +17,7 @@ Requires: tcpdump-bin
 Requires: tcpdump-doc
 BuildRequires : libcap-ng-dev
 BuildRequires : libpcap-dev
+Patch1: cve-2017-16808.nopatch
 
 %description
 # tcpdump
@@ -47,9 +48,13 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1504570151
+export SOURCE_DATE_EPOCH=1524312075
+export CFLAGS="$CFLAGS -fstack-protector-strong -mzero-caller-saved-regs "
+export FCFLAGS="$CFLAGS -fstack-protector-strong -mzero-caller-saved-regs "
+export FFLAGS="$CFLAGS -fstack-protector-strong -mzero-caller-saved-regs "
+export CXXFLAGS="$CXXFLAGS -fstack-protector-strong -mzero-caller-saved-regs "
 %configure --disable-static
-make V=1  %{?_smp_mflags}
+make  %{?_smp_mflags}
 
 %check
 export LANG=C
@@ -59,7 +64,7 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 make VERBOSE=1 V=1 %{?_smp_mflags} check
 
 %install
-export SOURCE_DATE_EPOCH=1504570151
+export SOURCE_DATE_EPOCH=1524312075
 rm -rf %{buildroot}
 %make_install
 
