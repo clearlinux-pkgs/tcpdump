@@ -6,18 +6,19 @@
 #
 Name     : tcpdump
 Version  : 4.9.2
-Release  : 27
+Release  : 28
 URL      : http://www.tcpdump.org/release/tcpdump-4.9.2.tar.gz
 Source0  : http://www.tcpdump.org/release/tcpdump-4.9.2.tar.gz
 Source99 : http://www.tcpdump.org/release/tcpdump-4.9.2.tar.gz.sig
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : BSD-3-Clause
-Requires: tcpdump-bin
-Requires: tcpdump-doc
+Requires: tcpdump-bin = %{version}-%{release}
+Requires: tcpdump-license = %{version}-%{release}
+Requires: tcpdump-man = %{version}-%{release}
 BuildRequires : libcap-ng-dev
 BuildRequires : libpcap-dev
-Patch1: cve-2017-16808.nopatch
+Patch1: CVE-2018-19519.patch
 
 %description
 # tcpdump
@@ -27,28 +28,39 @@ Status](https://travis-ci.org/the-tcpdump-group/tcpdump.png)](https://travis-ci.
 %package bin
 Summary: bin components for the tcpdump package.
 Group: Binaries
+Requires: tcpdump-license = %{version}-%{release}
+Requires: tcpdump-man = %{version}-%{release}
 
 %description bin
 bin components for the tcpdump package.
 
 
-%package doc
-Summary: doc components for the tcpdump package.
-Group: Documentation
+%package license
+Summary: license components for the tcpdump package.
+Group: Default
 
-%description doc
-doc components for the tcpdump package.
+%description license
+license components for the tcpdump package.
+
+
+%package man
+Summary: man components for the tcpdump package.
+Group: Default
+
+%description man
+man components for the tcpdump package.
 
 
 %prep
 %setup -q -n tcpdump-4.9.2
+%patch1 -p1
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1526024540
+export SOURCE_DATE_EPOCH=1544120787
 export CFLAGS="$CFLAGS -fstack-protector-strong -mzero-caller-saved-regs=used "
 export FCFLAGS="$CFLAGS -fstack-protector-strong -mzero-caller-saved-regs=used "
 export FFLAGS="$CFLAGS -fstack-protector-strong -mzero-caller-saved-regs=used "
@@ -64,8 +76,10 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 make VERBOSE=1 V=1 %{?_smp_mflags} check
 
 %install
-export SOURCE_DATE_EPOCH=1526024540
+export SOURCE_DATE_EPOCH=1544120787
 rm -rf %{buildroot}
+mkdir -p %{buildroot}/usr/share/package-licenses/tcpdump
+cp LICENSE %{buildroot}/usr/share/package-licenses/tcpdump/LICENSE
 %make_install
 
 %files
@@ -76,6 +90,10 @@ rm -rf %{buildroot}
 /usr/bin/tcpdump
 /usr/bin/tcpdump.4.9.2
 
-%files doc
-%defattr(-,root,root,-)
-%doc /usr/share/man/man1/*
+%files license
+%defattr(0644,root,root,0755)
+/usr/share/package-licenses/tcpdump/LICENSE
+
+%files man
+%defattr(0644,root,root,0755)
+/usr/share/man/man1/tcpdump.1

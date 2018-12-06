@@ -8,7 +8,6 @@ Configure miss: net/pfvar.h
 Configure miss: smi.h usability
 Configure miss: smi.h presence
 Configure miss: smi.h
-Configure miss: whether to drop root privileges by default
 Configure miss: whether to chroot
 Configure miss: cap_enter
 Configure miss: cap_rights_limit
