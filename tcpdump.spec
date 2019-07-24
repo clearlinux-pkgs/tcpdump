@@ -6,7 +6,7 @@
 #
 Name     : tcpdump
 Version  : 4.9.2
-Release  : 30
+Release  : 31
 URL      : http://www.tcpdump.org/release/tcpdump-4.9.2.tar.gz
 Source0  : http://www.tcpdump.org/release/tcpdump-4.9.2.tar.gz
 Source99 : http://www.tcpdump.org/release/tcpdump-4.9.2.tar.gz.sig
@@ -20,6 +20,7 @@ BuildRequires : libcap-ng-dev
 BuildRequires : libpcap-dev
 Patch1: CVE-2018-19519.patch
 Patch2: CVE-2017-16808.patch
+Patch3: CVE-2019-1010220.patch
 
 %description
 # tcpdump
@@ -55,13 +56,14 @@ man components for the tcpdump package.
 %setup -q -n tcpdump-4.9.2
 %patch1 -p1
 %patch2 -p1
+%patch3 -p1
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
-export LANG=C
-export SOURCE_DATE_EPOCH=1560910006
+export LANG=C.UTF-8
+export SOURCE_DATE_EPOCH=1564002010
 export GCC_IGNORE_WERROR=1
 export CFLAGS="$CFLAGS -fno-lto -fstack-protector-strong -mzero-caller-saved-regs=used "
 export FCFLAGS="$CFLAGS -fno-lto -fstack-protector-strong -mzero-caller-saved-regs=used "
@@ -71,14 +73,14 @@ export CXXFLAGS="$CXXFLAGS -fno-lto -fstack-protector-strong -mzero-caller-saved
 make  %{?_smp_mflags}
 
 %check
-export LANG=C
+export LANG=C.UTF-8
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 make VERBOSE=1 V=1 %{?_smp_mflags} check
 
 %install
-export SOURCE_DATE_EPOCH=1560910006
+export SOURCE_DATE_EPOCH=1564002010
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/tcpdump
 cp LICENSE %{buildroot}/usr/share/package-licenses/tcpdump/LICENSE
