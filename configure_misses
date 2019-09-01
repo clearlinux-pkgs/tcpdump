@@ -14,6 +14,7 @@ Configure miss: cap_enter
 Configure miss: cap_rights_limit
 Configure miss: cap_ioctls_limit
 Configure miss: whether to sandbox using capsicum
+Configure miss: library containing putmsg
 Configure miss: dnet_htoa declaration in netdnet/dnetdb.h
 Configure miss: library containing dnet_htoa
 Configure miss: main in -lrpc

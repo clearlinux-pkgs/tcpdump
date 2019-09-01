@@ -6,10 +6,10 @@
 #
 Name     : tcpdump
 Version  : 4.9.2
-Release  : 31
+Release  : 32
 URL      : http://www.tcpdump.org/release/tcpdump-4.9.2.tar.gz
 Source0  : http://www.tcpdump.org/release/tcpdump-4.9.2.tar.gz
-Source99 : http://www.tcpdump.org/release/tcpdump-4.9.2.tar.gz.sig
+Source1 : http://www.tcpdump.org/release/tcpdump-4.9.2.tar.gz.sig
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : BSD-3-Clause
@@ -63,7 +63,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1564002010
+export SOURCE_DATE_EPOCH=1567296924
 export GCC_IGNORE_WERROR=1
 export CFLAGS="$CFLAGS -fno-lto -fstack-protector-strong -mzero-caller-saved-regs=used "
 export FCFLAGS="$CFLAGS -fno-lto -fstack-protector-strong -mzero-caller-saved-regs=used "
@@ -80,7 +80,7 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 make VERBOSE=1 V=1 %{?_smp_mflags} check
 
 %install
-export SOURCE_DATE_EPOCH=1564002010
+export SOURCE_DATE_EPOCH=1567296924
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/tcpdump
 cp LICENSE %{buildroot}/usr/share/package-licenses/tcpdump/LICENSE
