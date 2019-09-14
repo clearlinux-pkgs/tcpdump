@@ -6,7 +6,7 @@
 #
 Name     : tcpdump
 Version  : 4.9.2
-Release  : 33
+Release  : 34
 URL      : https://www.tcpdump.org/release/tcpdump-4.9.2.tar.gz
 Source0  : https://www.tcpdump.org/release/tcpdump-4.9.2.tar.gz
 Source1 : https://www.tcpdump.org/release/tcpdump-4.9.2.tar.gz.sig
