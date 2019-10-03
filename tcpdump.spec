@@ -5,11 +5,11 @@
 # Source0 file verified with key 0xE089DEF1D9C15D0D (release@tcpdump.org)
 #
 Name     : tcpdump
-Version  : 4.9.2
-Release  : 34
-URL      : https://www.tcpdump.org/release/tcpdump-4.9.2.tar.gz
-Source0  : https://www.tcpdump.org/release/tcpdump-4.9.2.tar.gz
-Source1 : https://www.tcpdump.org/release/tcpdump-4.9.2.tar.gz.sig
+Version  : 4.9.3
+Release  : 35
+URL      : https://www.tcpdump.org/release/tcpdump-4.9.3.tar.gz
+Source0  : https://www.tcpdump.org/release/tcpdump-4.9.3.tar.gz
+Source1 : https://www.tcpdump.org/release/tcpdump-4.9.3.tar.gz.sig
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : BSD-3-Clause
@@ -19,8 +19,6 @@ Requires: tcpdump-man = %{version}-%{release}
 BuildRequires : libcap-ng-dev
 BuildRequires : libpcap-dev
 Patch1: CVE-2018-19519.patch
-Patch2: CVE-2017-16808.patch
-Patch3: CVE-2019-1010220.patch
 
 %description
 # tcpdump
@@ -53,17 +51,15 @@ man components for the tcpdump package.
 
 
 %prep
-%setup -q -n tcpdump-4.9.2
+%setup -q -n tcpdump-4.9.3
 %patch1 -p1
-%patch2 -p1
-%patch3 -p1
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1568218840
+export SOURCE_DATE_EPOCH=1570073626
 export GCC_IGNORE_WERROR=1
 export CFLAGS="$CFLAGS -fno-lto -fstack-protector-strong -mzero-caller-saved-regs=used "
 export FCFLAGS="$CFLAGS -fno-lto -fstack-protector-strong -mzero-caller-saved-regs=used "
@@ -80,7 +76,7 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 make VERBOSE=1 V=1 %{?_smp_mflags} check
 
 %install
-export SOURCE_DATE_EPOCH=1568218840
+export SOURCE_DATE_EPOCH=1570073626
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/tcpdump
 cp LICENSE %{buildroot}/usr/share/package-licenses/tcpdump/LICENSE
@@ -92,7 +88,7 @@ cp LICENSE %{buildroot}/usr/share/package-licenses/tcpdump/LICENSE
 %files bin
 %defattr(-,root,root,-)
 /usr/bin/tcpdump
-/usr/bin/tcpdump.4.9.2
+/usr/bin/tcpdump.4.9.3
 
 %files license
 %defattr(0644,root,root,0755)
