@@ -6,10 +6,10 @@
 #
 Name     : tcpdump
 Version  : 4.9.3
-Release  : 35
+Release  : 36
 URL      : https://www.tcpdump.org/release/tcpdump-4.9.3.tar.gz
 Source0  : https://www.tcpdump.org/release/tcpdump-4.9.3.tar.gz
-Source1 : https://www.tcpdump.org/release/tcpdump-4.9.3.tar.gz.sig
+Source1  : https://www.tcpdump.org/release/tcpdump-4.9.3.tar.gz.sig
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : BSD-3-Clause
@@ -52,6 +52,7 @@ man components for the tcpdump package.
 
 %prep
 %setup -q -n tcpdump-4.9.3
+cd %{_builddir}/tcpdump-4.9.3
 %patch1 -p1
 
 %build
@@ -59,11 +60,11 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1570073626
+export SOURCE_DATE_EPOCH=1604442892
 export GCC_IGNORE_WERROR=1
 export CFLAGS="$CFLAGS -fno-lto -fstack-protector-strong -mzero-caller-saved-regs=used "
-export FCFLAGS="$CFLAGS -fno-lto -fstack-protector-strong -mzero-caller-saved-regs=used "
-export FFLAGS="$CFLAGS -fno-lto -fstack-protector-strong -mzero-caller-saved-regs=used "
+export FCFLAGS="$FFLAGS -fno-lto -fstack-protector-strong -mzero-caller-saved-regs=used "
+export FFLAGS="$FFLAGS -fno-lto -fstack-protector-strong -mzero-caller-saved-regs=used "
 export CXXFLAGS="$CXXFLAGS -fno-lto -fstack-protector-strong -mzero-caller-saved-regs=used "
 %configure --disable-static
 make  %{?_smp_mflags}
@@ -73,13 +74,13 @@ export LANG=C.UTF-8
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
-make VERBOSE=1 V=1 %{?_smp_mflags} check
+make %{?_smp_mflags} check
 
 %install
-export SOURCE_DATE_EPOCH=1570073626
+export SOURCE_DATE_EPOCH=1604442892
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/tcpdump
-cp LICENSE %{buildroot}/usr/share/package-licenses/tcpdump/LICENSE
+cp %{_builddir}/tcpdump-4.9.3/LICENSE %{buildroot}/usr/share/package-licenses/tcpdump/e4b3a39cf858dd93c1d5766b8bf1b49fbe9a1d67
 %make_install
 
 %files
@@ -92,7 +93,7 @@ cp LICENSE %{buildroot}/usr/share/package-licenses/tcpdump/LICENSE
 
 %files license
 %defattr(0644,root,root,0755)
-/usr/share/package-licenses/tcpdump/LICENSE
+/usr/share/package-licenses/tcpdump/e4b3a39cf858dd93c1d5766b8bf1b49fbe9a1d67
 
 %files man
 %defattr(0644,root,root,0755)
