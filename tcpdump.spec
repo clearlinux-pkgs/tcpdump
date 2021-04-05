@@ -5,11 +5,11 @@
 # Source0 file verified with key 0xE089DEF1D9C15D0D (release@tcpdump.org)
 #
 Name     : tcpdump
-Version  : 4.9.3
-Release  : 36
-URL      : https://www.tcpdump.org/release/tcpdump-4.9.3.tar.gz
-Source0  : https://www.tcpdump.org/release/tcpdump-4.9.3.tar.gz
-Source1  : https://www.tcpdump.org/release/tcpdump-4.9.3.tar.gz.sig
+Version  : 4.99.0
+Release  : 37
+URL      : https://www.tcpdump.org/release/tcpdump-4.99.0.tar.gz
+Source0  : https://www.tcpdump.org/release/tcpdump-4.99.0.tar.gz
+Source1  : https://www.tcpdump.org/release/tcpdump-4.99.0.tar.gz.sig
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : BSD-3-Clause
@@ -18,12 +18,10 @@ Requires: tcpdump-license = %{version}-%{release}
 Requires: tcpdump-man = %{version}-%{release}
 BuildRequires : libcap-ng-dev
 BuildRequires : libpcap-dev
-Patch1: CVE-2018-19519.patch
 
 %description
 # tcpdump
-[![Build
-Status](https://travis-ci.org/the-tcpdump-group/tcpdump.png)](https://travis-ci.org/the-tcpdump-group/tcpdump)
+[![Build Status](https://travis-ci.org/the-tcpdump-group/tcpdump.svg?branch=master)](https://travis-ci.org/the-tcpdump-group/tcpdump)
 
 %package bin
 Summary: bin components for the tcpdump package.
@@ -51,16 +49,15 @@ man components for the tcpdump package.
 
 
 %prep
-%setup -q -n tcpdump-4.9.3
-cd %{_builddir}/tcpdump-4.9.3
-%patch1 -p1
+%setup -q -n tcpdump-4.99.0
+cd %{_builddir}/tcpdump-4.99.0
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1604442892
+export SOURCE_DATE_EPOCH=1617661218
 export GCC_IGNORE_WERROR=1
 export CFLAGS="$CFLAGS -fno-lto -fstack-protector-strong -mzero-caller-saved-regs=used "
 export FCFLAGS="$FFLAGS -fno-lto -fstack-protector-strong -mzero-caller-saved-regs=used "
@@ -77,10 +74,10 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 make %{?_smp_mflags} check
 
 %install
-export SOURCE_DATE_EPOCH=1604442892
+export SOURCE_DATE_EPOCH=1617661218
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/tcpdump
-cp %{_builddir}/tcpdump-4.9.3/LICENSE %{buildroot}/usr/share/package-licenses/tcpdump/e4b3a39cf858dd93c1d5766b8bf1b49fbe9a1d67
+cp %{_builddir}/tcpdump-4.99.0/LICENSE %{buildroot}/usr/share/package-licenses/tcpdump/bf0cb439d0ca55615b5060ee09d77af3ddc9518d
 %make_install
 
 %files
@@ -89,11 +86,11 @@ cp %{_builddir}/tcpdump-4.9.3/LICENSE %{buildroot}/usr/share/package-licenses/tc
 %files bin
 %defattr(-,root,root,-)
 /usr/bin/tcpdump
-/usr/bin/tcpdump.4.9.3
+/usr/bin/tcpdump.4.99.0
 
 %files license
 %defattr(0644,root,root,0755)
-/usr/share/package-licenses/tcpdump/e4b3a39cf858dd93c1d5766b8bf1b49fbe9a1d67
+/usr/share/package-licenses/tcpdump/bf0cb439d0ca55615b5060ee09d77af3ddc9518d
 
 %files man
 %defattr(0644,root,root,0755)
