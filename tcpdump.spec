@@ -6,7 +6,7 @@
 #
 Name     : tcpdump
 Version  : 4.99.0
-Release  : 37
+Release  : 38
 URL      : https://www.tcpdump.org/release/tcpdump-4.99.0.tar.gz
 Source0  : https://www.tcpdump.org/release/tcpdump-4.99.0.tar.gz
 Source1  : https://www.tcpdump.org/release/tcpdump-4.99.0.tar.gz.sig
@@ -59,10 +59,10 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
 export SOURCE_DATE_EPOCH=1617661218
 export GCC_IGNORE_WERROR=1
-export CFLAGS="$CFLAGS -fno-lto -fstack-protector-strong -mzero-caller-saved-regs=used "
-export FCFLAGS="$FFLAGS -fno-lto -fstack-protector-strong -mzero-caller-saved-regs=used "
-export FFLAGS="$FFLAGS -fno-lto -fstack-protector-strong -mzero-caller-saved-regs=used "
-export CXXFLAGS="$CXXFLAGS -fno-lto -fstack-protector-strong -mzero-caller-saved-regs=used "
+export CFLAGS="$CFLAGS -fno-lto -fstack-protector-strong -fzero-call-used-regs=used "
+export FCFLAGS="$FFLAGS -fno-lto -fstack-protector-strong -fzero-call-used-regs=used "
+export FFLAGS="$FFLAGS -fno-lto -fstack-protector-strong -fzero-call-used-regs=used "
+export CXXFLAGS="$CXXFLAGS -fno-lto -fstack-protector-strong -fzero-call-used-regs=used "
 %configure --disable-static
 make  %{?_smp_mflags}
 
