@@ -10,6 +10,9 @@ Configure miss: pcap_findalldevs_ex
 Configure miss: pcap_open
 Configure miss: pcap_set_optimizer_debug
 Configure miss: pcap_set_parser_debug
+Configure miss: rpc/rpc.h
+Configure miss: rpc/rpc.h presence
+Configure miss: rpc/rpc.h usability
 Configure miss: rpc/rpcent.h
 Configure miss: rpc/rpcent.h presence
 Configure miss: rpc/rpcent.h usability
