@@ -1,6 +1,5 @@
 Configure miss: buggy ether_ntohost
 Configure miss: library containing putmsg
-Configure miss: local pcap library
 Configure miss: main in -lrpc
 Configure miss: net/pfvar.h
 Configure miss: openssl/crypto.h

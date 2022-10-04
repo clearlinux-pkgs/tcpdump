@@ -6,7 +6,7 @@
 #
 Name     : tcpdump
 Version  : 4.99.1
-Release  : 39
+Release  : 40
 URL      : https://www.tcpdump.org/release/tcpdump-4.99.1.tar.gz
 Source0  : https://www.tcpdump.org/release/tcpdump-4.99.1.tar.gz
 Source1  : https://www.tcpdump.org/release/tcpdump-4.99.1.tar.gz.sig
@@ -57,12 +57,12 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1623454159
+export SOURCE_DATE_EPOCH=1664903845
 export GCC_IGNORE_WERROR=1
-export CFLAGS="$CFLAGS -fno-lto -fstack-protector-strong -fzero-call-used-regs=used "
-export FCFLAGS="$FFLAGS -fno-lto -fstack-protector-strong -fzero-call-used-regs=used "
-export FFLAGS="$FFLAGS -fno-lto -fstack-protector-strong -fzero-call-used-regs=used "
-export CXXFLAGS="$CXXFLAGS -fno-lto -fstack-protector-strong -fzero-call-used-regs=used "
+export CFLAGS="$CFLAGS -fno-lto "
+export FCFLAGS="$FFLAGS -fno-lto "
+export FFLAGS="$FFLAGS -fno-lto "
+export CXXFLAGS="$CXXFLAGS -fno-lto "
 %configure --disable-static
 make  %{?_smp_mflags}
 
@@ -74,10 +74,10 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 make %{?_smp_mflags} check
 
 %install
-export SOURCE_DATE_EPOCH=1623454159
+export SOURCE_DATE_EPOCH=1664903845
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/tcpdump
-cp %{_builddir}/tcpdump-4.99.1/LICENSE %{buildroot}/usr/share/package-licenses/tcpdump/bf0cb439d0ca55615b5060ee09d77af3ddc9518d
+cp %{_builddir}/tcpdump-%{version}/LICENSE %{buildroot}/usr/share/package-licenses/tcpdump/bf0cb439d0ca55615b5060ee09d77af3ddc9518d || :
 %make_install
 
 %files
