@@ -3,6 +3,9 @@ Configure miss: cap_gethostbyaddr in -lcap_dns
 Configure miss: cap_init in -lcasper
 Configure miss: library containing putmsg
 Configure miss: main in -lrpc
+Configure miss: openssl/crypto.h
+Configure miss: openssl/crypto.h presence
+Configure miss: openssl/crypto.h usability
 Configure miss: pcap_findalldevs_ex
 Configure miss: pcap_open
 Configure miss: pcap_set_optimizer_debug
