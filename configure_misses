@@ -1,32 +1,27 @@
+Configure miss: brew
 Configure miss: buggy ether_ntohost
 Configure miss: cap_gethostbyaddr in -lcap_dns
 Configure miss: cap_init in -lcasper
+Configure miss: gcc options needed to detect all undeclared functions
+Configure miss: libcrypto with pkg-config
 Configure miss: library containing putmsg
+Configure miss: local pcap library
 Configure miss: main in -lrpc
-Configure miss: openssl/crypto.h
-Configure miss: openssl/crypto.h presence
-Configure miss: openssl/crypto.h usability
 Configure miss: pcap_findalldevs_ex
 Configure miss: pcap_open
 Configure miss: pcap_set_optimizer_debug
 Configure miss: pcap_set_parser_debug
 Configure miss: rpc/rpc.h
-Configure miss: rpc/rpc.h presence
-Configure miss: rpc/rpc.h usability
 Configure miss: rpc/rpcent.h
-Configure miss: rpc/rpcent.h presence
-Configure miss: rpc/rpcent.h usability
 Configure miss: smi.h
-Configure miss: smi.h presence
-Configure miss: smi.h usability
 Configure miss: sys/capsicum.h
-Configure miss: sys/capsicum.h presence
-Configure miss: sys/capsicum.h usability
 Configure miss: whether ether_ntohost is declared
 Configure miss: whether pcap_debug is defined by libpcap
 Configure miss: whether to chroot
 Configure miss: whether to drop root privileges by default
+Configure miss: whether to enable the instrument functions code
 Configure miss: whether to enable the possibly-buggy SMB printer
 Configure miss: whether to sandbox using Casper library
 Configure miss: whether to sandbox using capsicum
+Configure miss: whether we have a system OpenSSL/libressl that we can use
 Configure miss: whether yydebug is defined by libpcap
